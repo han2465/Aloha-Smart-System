@@ -916,7 +916,7 @@ function FooterV2() {
             <div style={{ fontSize: 13, color: COLORS_V2.ink50, lineHeight: 1.6 }}>
               Operated by Musubi Media LLC<br/>
               Honolulu, Hawaii<br/>
-              <a href="https://musubimedia.com" style={{ color: COLORS_V2.accent, fontWeight: 500 }}>
+              <a href="https://musubimedia.net" style={{ color: COLORS_V2.accent, fontWeight: 500 }}>
                 Sister company: Musubi Media →
               </a>
             </div>
