@@ -1,0 +1,136 @@
+/* Aloha Smart System — Design Tokens (Light, Ocean Blue) */
+:root {
+  /* Surface */
+  --bg: #F5F2EA;          /* soft cream — clearer than #FBFAF6, keeps warmth */
+  --bg-alt: #ECE7DA;      /* slightly deeper cream */
+  --bg-deep: #E0D9C6;     /* deepest sand */
+  --surface: #FFFFFF;
+  --surface-blue: #EAF2FB;  /* very pale ocean */
+  --surface-blue-2: #D7E6F5;
+
+  /* Ink */
+  --ink: #0E1A24;          /* deep navy-black */
+  --ink-80: rgba(14, 26, 36, 0.82);
+  --ink-70: rgba(14, 26, 36, 0.7);
+  --ink-50: rgba(14, 26, 36, 0.5);
+  --ink-30: rgba(14, 26, 36, 0.28);
+  --ink-15: rgba(14, 26, 36, 0.14);
+  --ink-08: rgba(14, 26, 36, 0.08);
+
+  /* Brand */
+  --ocean: #0E5BA8;        /* primary trust blue */
+  --ocean-bright: #1B7BC9; /* lighter ocean — for lighter sections */
+  --ocean-deep: #0A3C7A;
+  --coral: #D94F2F;        /* hibiscus */
+  --gold: #C9941E;         /* sun */
+  --palm: #1F6E4D;         /* palm green */
+  --sand: #E8D4A2;
+
+  /* Type */
+  --font-display: 'Inter Tight', system-ui, sans-serif;
+  --font-body: 'Inter Tight', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(14,26,36,0.04), 0 0 0 1px rgba(14,26,36,0.04);
+  --shadow-md: 0 4px 12px rgba(14,26,36,0.06), 0 0 0 1px rgba(14,26,36,0.05);
+  --shadow-lg: 0 12px 36px rgba(14,26,36,0.08), 0 0 0 1px rgba(14,26,36,0.05);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+::selection { background: var(--ocean); color: white; }
+
+/* Mobile responsive helpers — apply via className when needed */
+.mobile-only { display: none; }
+@media (max-width: 760px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+}
+
+/* ============================================================
+   Universal mobile flatten — works against React inline styles
+   via attribute selectors. Applies across all Aloha + Musubi
+   pages that link this stylesheet. (≤768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Any grid → single column */
+  [style*="display: grid"][style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  /* 4-up stat strips → 2 columns */
+  [style*="display: grid"][style*="repeat(4, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+  /* 4-up footer 1.5fr 1fr 1fr 1fr → 2 columns */
+  [style*="display: grid"][style*="1.5fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* Reduce big section paddings */
+  section,
+  [style*="padding: 96px"],
+  [style*="padding: 120px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  [style*="padding: 96px 32px"]  { padding-top: 56px !important; padding-bottom: 56px !important; }
+  [style*="padding: 120px 32px"] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  [style*="padding: 64px 32px 56px"] { padding: 32px 20px 36px !important; }
+
+  /* Heading sizes */
+  h1 { font-size: clamp(34px, 9vw, 44px) !important; line-height: 1.05 !important; }
+  h2 { font-size: clamp(26px, 7.5vw, 36px) !important; line-height: 1.1 !important; }
+  h3 { font-size: clamp(20px, 5.5vw, 26px) !important; }
+
+  /* Center-clamped containers stop hugging edges */
+  [style*="maxWidth: 1280"], [style*="max-width: 1280"],
+  [style*="maxWidth: 1320"], [style*="max-width: 1320"],
+  [style*="maxWidth: 1200"], [style*="max-width: 1200"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Floating cards in hero -> static / inline */
+  [style*="position: absolute"][style*="bottom"][style*="right"],
+  [style*="position: absolute"][style*="top: 14px"][style*="left: 14px"] {
+    position: static !important;
+    margin-top: 12px !important;
+  }
+
+  /* Buttons no longer width-locked */
+  [style*="white-space: nowrap"] { white-space: normal !important; }
+
+  /* Body / image safety */
+  body, html { overflow-x: hidden !important; }
+  img, video, svg { max-width: 100% !important; height: auto !important; }
+
+  /* ----- Nav: hide all middle/inner links, keep CTA(s) ----- */
+  nav > div { padding: 12px 16px !important; }
+  /* Hide non-CTA links inside nav (CTA = href starting with #contact, /contact, mailto, tel, find-your-fit) */
+  nav a:not([href^="#contact"]):not([href*="contact"]):not([href*="find-your-fit"]):not([href^="#top"]):not([href="/"]):not([href="index.html"]):not([href="home.html"]):not([href="../"]):not([href="../index.html"]):not([href="Aloha Smart System.html"]):not([href="../Aloha Smart System.html"]) {
+    display: none !important;
+  }
+  /* Make remaining CTAs compact */
+  nav a[href*="contact"],
+  nav a[href*="find-your-fit"] {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+  nav a[href*="find-your-fit"] span {
+    display: none !important;
+  }
+}

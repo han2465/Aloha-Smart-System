@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smart Kiosk — Clover &amp; Custom Self-Order Kiosks for Hawaii Restaurants | Aloha Smart System</title>
+<meta name="description" content="Smart Kiosk by Aloha Smart System — two paths to self-order. Premium Clover hardware or custom-built kiosks in 4 form factors. Same Clover-connected software. Built and serviced in Honolulu." />
+<meta name="keywords" content="Hawaii self-order kiosk, Clover kiosk Honolulu, custom kiosk Hawaii, restaurant kiosk Hawaii, food court kiosk, multi-language kiosk Hawaii, Clover authorized kiosk, Honolulu POS kiosk" />
+<meta name="geo.region" content="US-HI" />
+<meta name="geo.placename" content="Honolulu, Hawaii" />
+<meta name="author" content="Aloha Smart System — Musubi Media LLC" />
+<link rel="canonical" href="https://alohasmartsystem.com/products/kiosk" />
+<meta property="og:type" content="product" />
+<meta property="og:title" content="Smart Kiosk — Clover &amp; custom self-order kiosks for Hawaii" />
+<meta property="og:description" content="Two paths, one platform. Premium Clover hardware or custom-built kiosks. Built in Honolulu." />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Smart Kiosk",
+  "alternateName": ["Hawaii Self-Order Kiosk", "Clover Kiosk Hawaii", "Custom Kiosk Honolulu"],
+  "brand": { "@type": "Brand", "name": "Aloha Smart System" },
+  "description": "Self-order kiosk product line — premium Clover hardware or custom-built kiosks in 4 form factors. Multi-language menus, Clover POS integration, built and serviced from Honolulu.",
+  "manufacturer": { "@type": "Organization", "name": "Musubi Media LLC", "address": { "@type": "PostalAddress", "addressLocality": "Honolulu", "addressRegion": "HI", "addressCountry": "US" } },
+  "category": "Restaurant Self-Order Hardware"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles/aloha.css" />
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../components/use-mobile.jsx"></script>
+<script type="text/babel" src="../components/partner-strip.jsx"></script>
+<script type="text/babel" src="../components/ksk-data.jsx"></script>
+<script type="text/babel" src="../components/ksk-page.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+ReactDOM.createRoot(document.getElementById('root')).render(<SmartKioskPage />);
+</script>
+</body>
+</html>

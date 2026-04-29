@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — Aloha Smart System &amp; Musubi Media | Hawaii's Operator-Built POS &amp; Marketing</title>
+<meta name="description" content="Aloha Smart System and Musubi Media are sister companies built by Hawaii small-business operator Anthony Han. Software, marketing, and growth for Honolulu restaurants — built from running our own stores." />
+<meta name="keywords" content="Aloha Smart System about, Musubi Media Hawaii, Anthony Han Honolulu, Hawaii POS company, Honolulu restaurant software, Soul Chicken Hawaii founder, Hawaii Korean small business, Honolulu marketing agency" />
+<meta name="geo.region" content="US-HI" />
+<meta name="geo.placename" content="Honolulu, Hawaii" />
+<meta name="author" content="Aloha Smart System — Musubi Media LLC" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://alohasmartsystem.com/about" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="About — Aloha Smart System &amp; Musubi Media" />
+<meta property="og:description" content="Built by operators, for operators. Software and marketing for Hawaii small businesses, run out of Honolulu." />
+<meta property="og:site_name" content="Aloha Smart System" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aloha Smart System",
+  "alternateName": ["Musubi Media", "Musubi Media LLC"],
+  "url": "https://alohasmartsystem.com",
+  "sameAs": ["https://musubimedia.net"],
+  "founder": { "@type": "Person", "name": "Anthony Han" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Honolulu", "addressRegion": "HI", "addressCountry": "US" },
+  "telephone": "+1-808-650-3331",
+  "email": "info@alohasmartsystem.com"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/aloha.css" />
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="components/use-mobile.jsx"></script>
+<script type="text/babel" src="components/partner-strip.jsx"></script>
+<script type="text/babel" src="components/about-data.jsx"></script>
+<script type="text/babel" src="components/about-page.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+ReactDOM.createRoot(document.getElementById('root')).render(<AboutPage />);
+</script>
+</body>
+</html>

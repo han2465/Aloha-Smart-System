@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    
+  </defs>
+  
+  <g fill="#1A1A1F">
+    <text x="0" y="56" class="wm" font-size="64">A</text>
+    
+    <circle cx="62" cy="50" r="6" fill="#C8553D"></circle>
+  </g>
+  
+  <g fill="#1A1A1F">
+    <text x="86" y="42" class="wm" font-size="26">Aloha</text>
+    <text x="86" y="62" class="wm-sub" font-size="10" fill="#6F6F77">Smart System</text>
+  </g>
+</svg>

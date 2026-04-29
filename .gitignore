@@ -1,0 +1,41 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Internal / build artifacts
+node_modules/
+dist/
+.cache/
+
+# Project-internal notes (do NOT publish)
+CLAUDE.md
+.design-canvas.state.json
+DEV_NOTES.md
+SETUP.md
+CHANGELOG.md
+
+# Internal-only files we never deploy
+__mobile-test.html
+bg-color-samples.html
+mobile-preview.html
+design-canvas.jsx
+ios-frame.jsx
+"Musubi Media Website.html"
+scraps/
+tmp/
+mobile-check/
+screenshots/
+uploads/
+
+# Local-only setup script (contains personal email)
+setup-git.sh

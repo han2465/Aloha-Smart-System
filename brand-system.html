@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aloha Smart System — Brand System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F5EFE6;
+    --bg-2: #EDE4D3;
+    --ink: #1A1A1F;
+    --ink-70: rgba(26,26,31,0.72);
+    --ink-50: rgba(26,26,31,0.5);
+    --ink-15: rgba(26,26,31,0.15);
+    --ink-08: rgba(26,26,31,0.08);
+    --terra: #C8553D;
+    --terra-deep: #7A2E1F;
+    --terra-pale: #F1D9CF;
+    --sand: #F5EFE6;
+    --paper: #FFFFFF;
+    --gold: #C9941E;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 56px 32px 96px; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); }
+  .h1 { font-size: clamp(40px, 5.5vw, 72px); line-height: 0.96; letter-spacing: -0.035em; font-weight: 700; margin: 14px 0 12px; }
+  .h2 { font-size: clamp(24px, 2.5vw, 32px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 18px; }
+  .lede { font-size: 18px; line-height: 1.55; color: var(--ink-70); max-width: 720px; }
+  .section { margin-top: 72px; padding-top: 32px; border-top: 1px solid var(--ink-15); }
+  .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-50); margin-bottom: 24px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .card { background: var(--paper); border: 1px solid var(--ink-08); border-radius: 16px; padding: 28px; }
+  .card-dark { background: var(--ink); color: var(--sand); border: none; }
+  .card-terra { background: var(--terra); color: var(--paper); border: none; }
+  .label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); }
+  .label-on-dark { color: rgba(245,239,230,0.55); }
+
+  /* ---- Logo block ---- */
+  .logo-canvas { display: grid; place-items: center; min-height: 220px; }
+  .logo-A {
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-weight: 700; letter-spacing: -0.04em;
+    display: inline-flex; align-items: baseline; gap: 0;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .logo-A.large { font-size: 96px; }
+  .logo-A.med { font-size: 56px; }
+  .logo-A.small { font-size: 32px; }
+  .logo-A .dot {
+    display: inline-block;
+    width: 0.18em; height: 0.18em;
+    border-radius: 50%;
+    background: var(--terra);
+    margin-left: 0.06em;
+    transform: translateY(-0.06em);
+  }
+  .wordmark {
+    display: flex; align-items: center; gap: 18px;
+  }
+  .wordmark-text { display: flex; flex-direction: column; gap: 2px; }
+  .wordmark-text .name { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+  .wordmark-text .sub { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-50); }
+  .on-dark .name, .on-dark .logo-A { color: var(--sand); }
+  .on-dark .sub { color: rgba(245,239,230,0.55); }
+  .on-terra .name, .on-terra .logo-A { color: var(--paper); }
+  .on-terra .logo-A .dot { background: var(--paper); }
+  .on-terra .sub { color: rgba(255,255,255,0.7); }
+
+  /* ---- Color swatches ---- */
+  .swatch { border-radius: 14px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; border: 1px solid var(--ink-08); }
+  .swatch .name { font-weight: 700; font-size: 14px; }
+  .swatch .hex { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; opacity: 0.72; margin-top: 2px; }
+  .swatch .role { font-size: 11px; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ---- Pattern canvas ---- */
+  .pattern-bg {
+    background-color: var(--bg-2);
+    background-image:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60"><g fill="none" stroke="%23C8553D" stroke-width="1" stroke-linejoin="round" opacity="0.22"><g transform="translate(30 30)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/><g transform="rotate(72)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><g transform="rotate(144)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><g transform="rotate(216)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><g transform="rotate(288)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><circle r="2" fill="%23C8553D" stroke="none"/></g></g></svg>');
+    background-size: 60px 60px;
+  }
+
+  /* ---- Application examples ---- */
+  .biz-card { aspect-ratio: 1.75 / 1; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px rgba(26,26,31,0.06); }
+  .biz-card.front { background: var(--bg); }
+  .biz-card.back { background: var(--ink); color: var(--sand); position: relative; overflow: hidden; }
+  .biz-card.back::before { content: ''; position: absolute; inset: 0; opacity: 0.18;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60"><g fill="none" stroke="%23C8553D" stroke-width="1" stroke-linejoin="round"><g transform="translate(30 30)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/><g transform="rotate(72)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><g transform="rotate(144)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><g transform="rotate(216)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><g transform="rotate(288)"><path d="M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z"/></g><circle r="2" fill="%23C8553D" stroke="none"/></g></g></svg>');
+    background-size: 56px 56px;
+  }
+  .biz-card .person { font-size: 13px; font-weight: 700; }
+  .biz-card .role { font-size: 11px; color: var(--ink-50); }
+  .biz-card.back .role { color: rgba(245,239,230,0.6); }
+  .biz-card .meta { font-size: 10px; letter-spacing: 0.06em; line-height: 1.5; }
+  .biz-card.back .meta { position: relative; z-index: 1; }
+
+  .app-icon {
+    aspect-ratio: 1; border-radius: 22%;
+    background: var(--ink); color: var(--sand);
+    display: grid; place-items: center;
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-weight: 700; letter-spacing: -0.04em;
+    box-shadow: 0 12px 30px rgba(26,26,31,0.18);
+    position: relative;
+  }
+  .app-icon .a { font-size: 56%; line-height: 1; display: inline-flex; align-items: baseline; }
+  .app-icon .dot { width: 0.16em; height: 0.16em; border-radius: 50%; background: var(--terra); margin-left: 0.04em; transform: translateY(-0.04em); display: inline-block; }
+  .app-icon.terra { background: var(--terra); }
+  .app-icon.terra .dot { background: var(--sand); }
+  .app-icon.sand { background: var(--sand); color: var(--ink); }
+
+  .sticker {
+    aspect-ratio: 2.4 / 1;
+    background: var(--paper);
+    border: 1.5px solid var(--ink); border-radius: 18px;
+    padding: 18px 22px;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .sticker .qr { width: 68px; height: 68px; background:
+    conic-gradient(from 0deg, #1A1A1F 0deg, #1A1A1F 90deg, transparent 90deg, transparent 100deg),
+    repeating-linear-gradient(45deg, #1A1A1F 0 2px, transparent 2px 4px),
+    #1A1A1F;
+    border-radius: 8px; flex-shrink: 0;
+    background-image:
+      linear-gradient(#1A1A1F, #1A1A1F),
+      repeating-linear-gradient(0deg, transparent 0 4px, #1A1A1F 4px 6px),
+      repeating-linear-gradient(90deg, transparent 0 4px, #1A1A1F 4px 6px);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    background-color: #fff;
+    /* fake QR */
+    background:
+      radial-gradient(circle at 12% 12%, #1A1A1F 12%, transparent 12%) 0 0/22% 22%,
+      radial-gradient(circle at 88% 12%, #1A1A1F 12%, transparent 12%) 0 0/22% 22%,
+      radial-gradient(circle at 12% 88%, #1A1A1F 12%, transparent 12%) 0 0/22% 22%,
+      repeating-linear-gradient(0deg, #1A1A1F 0 1.5px, transparent 1.5px 4px),
+      repeating-linear-gradient(90deg, #1A1A1F 0 1.5px, transparent 1.5px 4px),
+      #fff;
+  }
+  .sticker .info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .sticker .info-line { font-size: 10px; color: var(--ink-50); }
+  .sticker .info-line strong { color: var(--ink); }
+
+  .nav-preview {
+    background: var(--bg);
+    border: 1px solid var(--ink-08); border-radius: 16px;
+    padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px;
+  }
+  .nav-preview .nav-links { display: flex; gap: 22px; color: var(--ink-70); }
+  .nav-preview .cta { background: var(--terra); color: var(--paper); padding: 8px 16px; border-radius: 999px; font-weight: 600; }
+
+  .vehicle {
+    aspect-ratio: 2.4 / 1; border-radius: 18px; background: var(--paper);
+    border: 1.5px dashed var(--ink-15);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .vehicle::before {
+    content: 'truck side panel';
+    position: absolute; bottom: 8px; right: 14px;
+    font-size: 9px; color: var(--ink-50); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .badge-808 {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper); border: 1px solid var(--ink-15);
+    padding: 6px 12px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .badge-808 .flower { width: 14px; height: 14px; }
+
+  .compare-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--ink-15); border-radius: 16px; overflow: hidden;
+  }
+  .compare-cell { padding: 22px 24px; }
+  .compare-cell.us { background: var(--paper); }
+  .compare-cell.them { background: var(--bg-2); border-left: 1px solid var(--ink-15); }
+  .compare-cell .label-row { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px; }
+  .compare-cell.us .label-row { color: var(--terra); }
+  .compare-cell.them .label-row { color: var(--ink-50); }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Brand system v1</div>
+  <h1 class="h1">A&middot; — a small mark, with a signal.</h1>
+  <p class="lede">A wordmark and a single terracotta dot. The dot is the &ldquo;on&rdquo; — every smart system starts with a signal. Hawaii enters the brand through a plumeria pattern that lives in the background, never on the mark itself. This keeps Aloha unmistakable next to Musubi&rsquo;s blue, and unmistakably <em>not</em> a generic merchant-services logo.</p>
+
+  <!-- LOGO LOCKUPS -->
+  <div class="section">
+    <div class="section-eyebrow">01 — Logo lockups</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="label">Mark · light</div>
+        <div class="logo-canvas">
+          <span class="logo-A large">A<span class="dot"></span></span>
+        </div>
+      </div>
+      <div class="card card-dark on-dark">
+        <div class="label label-on-dark">Mark · dark</div>
+        <div class="logo-canvas">
+          <span class="logo-A large">A<span class="dot"></span></span>
+        </div>
+      </div>
+      <div class="card card-terra on-terra">
+        <div class="label" style="color: rgba(255,255,255,0.7)">Mark · terra</div>
+        <div class="logo-canvas">
+          <span class="logo-A large">A<span class="dot"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 24px;">
+      <div class="card" style="grid-column: span 2;">
+        <div class="label">Horizontal lockup</div>
+        <div class="logo-canvas" style="min-height: 160px;">
+          <div class="wordmark">
+            <span class="logo-A med">A<span class="dot"></span></span>
+            <div class="wordmark-text">
+              <span class="name">Aloha</span>
+              <span class="sub">Smart System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-dark on-dark">
+        <div class="label label-on-dark">Stacked · dark</div>
+        <div class="logo-canvas" style="min-height: 160px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <span class="logo-A med">A<span class="dot"></span></span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
+              <span class="name" style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em;">Aloha</span>
+              <span class="sub" style="font-size: 9px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;">Smart System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-top: 24px;">
+      <div class="card" style="text-align: center;">
+        <div class="label" style="margin-bottom: 18px;">96px</div>
+        <span class="logo-A large">A<span class="dot"></span></span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div class="label" style="margin-bottom: 18px;">56px</div>
+        <span class="logo-A med">A<span class="dot"></span></span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div class="label" style="margin-bottom: 18px;">32px</div>
+        <span class="logo-A small">A<span class="dot"></span></span>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div class="label" style="margin-bottom: 22px;">16px favicon</div>
+        <span class="logo-A" style="font-size: 16px;">A<span class="dot"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOR -->
+  <div class="section">
+    <div class="section-eyebrow">02 — Color · Sunset Terracotta + Deep Charcoal</div>
+    <p class="lede" style="margin-bottom: 24px;">Warm earth + smart charcoal. Where Musubi&rsquo;s blue says &ldquo;media studio,&rdquo; Aloha&rsquo;s terracotta says &ldquo;hardware on the counter, dialed in by people who live here.&rdquo;</p>
+    <div class="grid-4">
+      <div class="swatch" style="background: var(--terra); color: white;">
+        <div><div class="role">Primary</div><div class="name">Sunset Terracotta</div></div>
+        <div class="hex">#C8553D</div>
+      </div>
+      <div class="swatch" style="background: var(--ink); color: var(--sand);">
+        <div><div class="role">Ink</div><div class="name">Deep Charcoal</div></div>
+        <div class="hex">#1A1A1F</div>
+      </div>
+      <div class="swatch" style="background: var(--bg); color: var(--ink);">
+        <div><div class="role">Surface</div><div class="name">Warm Sand</div></div>
+        <div class="hex">#F5EFE6</div>
+      </div>
+      <div class="swatch" style="background: var(--terra-deep); color: white;">
+        <div><div class="role">Hover · accent</div><div class="name">Mahogany</div></div>
+        <div class="hex">#7A2E1F</div>
+      </div>
+      <div class="swatch" style="background: var(--bg-2); color: var(--ink);">
+        <div><div class="role">Surface alt</div><div class="name">Lava Sand</div></div>
+        <div class="hex">#EDE4D3</div>
+      </div>
+      <div class="swatch" style="background: var(--gold); color: var(--ink);">
+        <div><div class="role">Sparingly</div><div class="name">Pineapple Gold</div></div>
+        <div class="hex">#C9941E</div>
+      </div>
+      <div class="swatch" style="background: var(--terra-pale); color: var(--terra-deep);">
+        <div><div class="role">Tint</div><div class="name">Plumeria Blush</div></div>
+        <div class="hex">#F1D9CF</div>
+      </div>
+      <div class="swatch" style="background: var(--paper); color: var(--ink);">
+        <div><div class="role">Card</div><div class="name">Paper</div></div>
+        <div class="hex">#FFFFFF</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATTERN -->
+  <div class="section">
+    <div class="section-eyebrow">03 — Plumeria pattern · the brand&rsquo;s second voice</div>
+    <p class="lede" style="margin-bottom: 24px;">Five-petal plumeria, abstracted to a single line at one weight. Lives only in backgrounds, footers, business-card backs, and the hawaii-built micro-badge. Never on the mark, never near a CTA.</p>
+    <div class="grid-2">
+      <div class="card pattern-bg" style="min-height: 280px; display: grid; place-items: center;">
+        <div style="background: rgba(245,239,230,0.92); padding: 22px 28px; border-radius: 14px; backdrop-filter: blur(4px);">
+          <span class="logo-A med">A<span class="dot"></span></span>
+        </div>
+      </div>
+      <div class="card card-dark on-dark" style="position: relative; overflow: hidden; min-height: 280px; display: grid; place-items: center;">
+        <div style="position: absolute; inset: 0; opacity: 0.22;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot; width=&quot;60&quot; height=&quot;60&quot;><g fill=&quot;none&quot; stroke=&quot;%23C8553D&quot; stroke-width=&quot;1&quot; stroke-linejoin=&quot;round&quot;><g transform=&quot;translate(30 30)&quot;><path d=&quot;M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z&quot;/><g transform=&quot;rotate(72)&quot;><path d=&quot;M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z&quot;/></g><g transform=&quot;rotate(144)&quot;><path d=&quot;M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z&quot;/></g><g transform=&quot;rotate(216)&quot;><path d=&quot;M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z&quot;/></g><g transform=&quot;rotate(288)&quot;><path d=&quot;M0 -16 C 6 -13 9 -7 6 -1 C 3 3 -3 3 -6 -1 C -9 -7 -6 -13 0 -16 Z&quot;/></g><circle r=&quot;2&quot; fill=&quot;%23C8553D&quot; stroke=&quot;none&quot;/></g></g></svg>');
+          background-size: 60px 60px;"></div>
+        <div style="position: relative; z-index: 1; text-align: center;">
+          <span class="logo-A med">A<span class="dot"></span></span>
+          <div style="margin-top: 12px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,239,230,0.7);">Hawaii&middot;built</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;">
+      <div class="badge-808">
+        <svg class="flower" viewBox="-30 -30 60 60"><g fill="none" stroke="#C8553D" stroke-width="2" stroke-linejoin="round"><g><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(72)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(144)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(216)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(288)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><circle r="3" fill="#C8553D" stroke="none"/></g></svg>
+        Built in 808
+      </div>
+      <div class="badge-808" style="background: var(--ink); color: var(--sand); border-color: var(--ink);">
+        <svg class="flower" viewBox="-30 -30 60 60"><g fill="none" stroke="#F5EFE6" stroke-width="2" stroke-linejoin="round"><g><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(72)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(144)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(216)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><g transform="rotate(288)"><path d="M0 -22 C 8 -18 12 -10 8 -2 C 4 4 -4 4 -8 -2 C -12 -10 -8 -18 0 -22 Z"/></g><circle r="3" fill="#F5EFE6" stroke="none"/></g></svg>
+        Hawaii&middot;built since 2024
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATIONS -->
+  <div class="section">
+    <div class="section-eyebrow">04 — Applications</div>
+
+    <div class="grid-3">
+      <div>
+        <div class="label" style="margin-bottom: 12px;">Business card · front</div>
+        <div class="biz-card front">
+          <span class="logo-A med">A<span class="dot"></span></span>
+          <div>
+            <div class="person">Daniel Kim</div>
+            <div class="role">Founder</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom: 12px;">Business card · back</div>
+        <div class="biz-card back">
+          <div class="meta" style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Aloha Smart System</div>
+            <div style="opacity: 0.7;">alohasmartsystem.com</div>
+            <div style="opacity: 0.7;">(808) 650-3331</div>
+            <div style="opacity: 0.7;">info@alohasmartsystem.com</div>
+          </div>
+          <div style="position: relative; z-index: 1; align-self: flex-end;">
+            <span class="logo-A small" style="color: var(--sand);">A<span class="dot"></span></span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom: 12px;">Counter sticker (replaces current)</div>
+        <div class="sticker">
+          <div class="qr"></div>
+          <div class="info">
+            <span class="logo-A" style="font-size: 22px;">A<span class="dot"></span></span>
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em;">Aloha Smart System</div>
+            <div class="info-line"><strong>(808) 650-3331</strong></div>
+            <div class="info-line">alohasmartsystem.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-top: 32px;">
+      <div>
+        <div class="label" style="margin-bottom: 12px;">App icon · charcoal</div>
+        <div class="app-icon"><span class="a">A<span class="dot"></span></span></div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom: 12px;">App icon · terra</div>
+        <div class="app-icon terra"><span class="a">A<span class="dot"></span></span></div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom: 12px;">App icon · sand</div>
+        <div class="app-icon sand"><span class="a">A<span class="dot"></span></span></div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom: 12px;">Vehicle / window decal</div>
+        <div class="vehicle">
+          <div style="display: flex; align-items: center; gap: 18px;">
+            <span class="logo-A" style="font-size: 48px;">A<span class="dot"></span></span>
+            <div>
+              <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em;">Aloha Smart System</div>
+              <div style="font-size: 10px; color: var(--ink-50); letter-spacing: 0.18em; text-transform: uppercase;">(808) 650-3331 · alohasmartsystem.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <div class="label" style="margin-bottom: 12px;">Web header preview</div>
+      <div class="nav-preview">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="logo-A" style="font-size: 26px;">A<span class="dot"></span></span>
+          <div style="font-weight: 700; font-size: 14px; letter-spacing: -0.01em;">Aloha Smart System</div>
+        </div>
+        <div class="nav-links">
+          <span>Products</span><span>Industries</span><span>Processing</span><span>About</span>
+        </div>
+        <div class="cta">Book a demo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- vs Gravity positioning -->
+  <div class="section">
+    <div class="section-eyebrow">05 — Brand voice · vs the payment processor</div>
+    <p class="lede" style="margin-bottom: 24px;">A reminder of how the brand should <em>read</em> next to a typical Hawaii merchant-services competitor. Same warmth, different altitude.</p>
+    <div class="compare-row">
+      <div class="compare-cell us">
+        <div class="label-row">Aloha Smart System</div>
+        <div style="font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px;">We process your credit cards.<br/>Then we build the system on top.</div>
+        <div style="font-size: 13px; color: var(--ink-70); line-height: 1.5;">Built by operators. Multi-vendor settlement, kiosk, KDS, pickup TVs, marketing — engineered on Clover, integrated with Zorder.</div>
+      </div>
+      <div class="compare-cell them">
+        <div class="label-row">Typical merchant-services brand</div>
+        <div style="font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; opacity: 0.85;">&ldquo;Aloha &lsquo;ohana — your trusted local payments partner since 2007.&rdquo;</div>
+        <div style="font-size: 13px; color: var(--ink-70); line-height: 1.5;">Hibiscus, rainbow, family. Sells card processing + Clover hardware. No multi-vendor system, no KDS, no pickup TV, no integrated marketing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Don'ts -->
+  <div class="section">
+    <div class="section-eyebrow">06 — Do&rsquo;s &amp; don&rsquo;ts</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="label" style="color: var(--terra); margin-bottom: 16px;">Do</div>
+        <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; color: var(--ink-70);">
+          <li>Keep the dot one color: terracotta on light, paper on dark/terra.</li>
+          <li>Use plumeria pattern only as background texture &mdash; backs of cards, footers, decorative panels.</li>
+          <li>Pair the mark with generous whitespace; let the dot breathe.</li>
+          <li>When you need &ldquo;hawaii signal&rdquo; in copy areas, use the <em>Built in 808</em> badge, not flowers on the mark.</li>
+        </ul>
+      </div>
+      <div class="card" style="background: var(--bg-2);">
+        <div class="label" style="color: var(--terra-deep); margin-bottom: 16px;">Don&rsquo;t</div>
+        <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; color: var(--ink-70);">
+          <li>Don&rsquo;t add a hibiscus, leaf, wave, or sunburst <em>onto</em> the wordmark.</li>
+          <li>Don&rsquo;t recolor the dot to the gold or palm green.</li>
+          <li>Don&rsquo;t stack the mark on a busy photo without the paper card backdrop.</li>
+          <li>Don&rsquo;t use both terracotta and Musubi blue in the same composition &mdash; pick a side.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
