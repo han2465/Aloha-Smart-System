@@ -1,0 +1,11 @@
+# Aloha Smart System — alohasmartsystem.com
+# Hawaii's payment + commerce platform
+
+User-agent: *
+Allow: /
+
+# Block internal/legacy files
+Disallow: /home.html
+Disallow: /brand-system.html
+
+Sitemap: https://alohasmartsystem.com/sitemap.xml
