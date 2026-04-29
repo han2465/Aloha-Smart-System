@@ -33,11 +33,10 @@
     <text x="0" y="0" font-family="Inter Tight, system-ui, sans-serif" font-weight="700" font-size="68" letter-spacing="-0.025em" fill="#1A1A1F">Aloha Smart System</text>
     <text x="0" y="62" font-family="Inter Tight, system-ui, sans-serif" font-weight="500" font-size="32" letter-spacing="-0.01em" fill="rgba(26,26,31,0.65)">Hawaii's payment + commerce platform.</text>
 
-    <!-- Pill chip: Built in 808 / Clover / Honolulu -->
-    <g transform="translate(0 110)">
-      <rect x="0" y="0" rx="22" ry="22" width="380" height="44" fill="#FFFFFF" stroke="#C8553D" stroke-opacity="0.30" stroke-width="1"/>
-      <circle cx="22" cy="22" r="5" fill="#C8553D"/>
-      <text x="38" y="28" font-family="Inter Tight, system-ui, sans-serif" font-weight="600" font-size="14" letter-spacing="0.08em" fill="#7A2E1F">BUILT IN 808 · CLOVER-AUTHORIZED · HONOLULU</text>
+    <!-- Tag line — no pill, simple text in brand color -->
+    <g transform="translate(0 120)">
+      <circle cx="6" cy="11" r="6" fill="#C8553D"/>
+      <text x="22" y="17" font-family="Inter Tight, system-ui, sans-serif" font-weight="700" font-size="18" letter-spacing="0.10em" fill="#7A2E1F">BUILT IN 808 · CLOVER-AUTHORIZED · HONOLULU</text>
     </g>
   </g>
 
