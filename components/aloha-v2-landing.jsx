@@ -835,12 +835,59 @@ function FAQSection() {
 }
 
 function ContactCTA() {
+  const [status, setStatus] = React.useState('idle'); // idle | submitting | success | error
+  const [errorMsg, setErrorMsg] = React.useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
+    const formData = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        e.target.reset();
+      } else {
+        setStatus('error');
+        setErrorMsg(data.message || 'Something went wrong. Please email us directly.');
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg('Network error. Please email us directly.');
+    }
+  }
+
+  const inputStyle = {
+    width: '100%',
+    background: 'rgba(255,255,255,0.05)',
+    border: '1px solid rgba(255,255,255,0.18)',
+    borderRadius: 10,
+    padding: '14px 16px',
+    fontSize: 15,
+    color: 'white',
+    fontFamily: 'inherit',
+    outline: 'none',
+    transition: 'border-color 150ms ease, background 150ms ease',
+  };
+  const labelStyle = {
+    display: 'block', fontSize: 12, fontWeight: 600,
+    letterSpacing: '0.06em', textTransform: 'uppercase',
+    color: 'rgba(255,255,255,0.65)', marginBottom: 8,
+  };
+
   return (
     <section id="contact" style={{
       background: COLORS_V2.ink, color: 'white',
       padding: '120px 32px',
     }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 80 }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 64 }}>
+        {/* LEFT: headline + email/phone */}
         <div>
           <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: 16 }}>
@@ -853,43 +900,141 @@ function ContactCTA() {
             Get a payment quote.<br/>
             Or just talk story.
           </h2>
-          <p style={{ fontSize: 18, lineHeight: 1.55, color: 'rgba(255,255,255,0.7)', maxWidth: 540, marginBottom: 40 }}>
+          <p style={{ fontSize: 18, lineHeight: 1.55, color: 'rgba(255,255,255,0.7)', maxWidth: 520, marginBottom: 36 }}>
             Send us your menu, current processor statement, or a photo of the chaos behind your counter.
             We&rsquo;ll come back with a real quote and a plan.
           </p>
 
-          <div style={{ display: 'grid', gap: 20 }}>
+          <div style={{ display: 'grid', gap: 18, marginBottom: 32 }}>
             <a href={`mailto:${ALOHA_BRAND.email}`} style={{
-              fontSize: 22, fontWeight: 600, color: 'white', letterSpacing: '-0.01em',
+              fontSize: 20, fontWeight: 600, color: 'white', letterSpacing: '-0.01em',
               borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: 6, alignSelf: 'flex-start',
             }}>{ALOHA_BRAND.email}</a>
             <a href={`tel:${ALOHA_BRAND.phone.replace(/\D/g,'')}`} style={{
-              fontSize: 22, fontWeight: 600, color: 'white', letterSpacing: '-0.01em',
+              fontSize: 20, fontWeight: 600, color: 'white', letterSpacing: '-0.01em',
               borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: 6, alignSelf: 'flex-start',
             }}>{ALOHA_BRAND.phone}</a>
           </div>
+
+          <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
+            Same business day reply, Mon–Fri.<br/>
+            On-site visits across O&lsquo;ahu. Remote support neighbor islands.
+          </div>
         </div>
 
+        {/* RIGHT: contact form (Web3Forms) */}
         <div style={{
-          background: 'rgba(255,255,255,0.05)',
+          background: 'rgba(255,255,255,0.04)',
           border: '1px solid rgba(255,255,255,0.12)',
           borderRadius: 20, padding: 36,
         }}>
-          <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.08em',
-            textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: 20 }}>
-            What happens next
-          </div>
-          {[
-            ['Day 0', 'You email us. We reply same business day.'],
-            ['Day 1–3', 'On-site walkthrough or video call. Show us your setup.'],
-            ['Week 1', 'Custom quote: processing rate + system buildout.'],
-            ['Week 2–4', 'Install, train, go live. Aloha is on call.'],
-          ].map(([d, t]) => (
-            <div key={d} style={{ display: 'grid', gridTemplateColumns: '90px 1fr', gap: 16, padding: '16px 0', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: COLORS_V2.blush, letterSpacing: '0.04em' }}>{d}</div>
-              <div style={{ fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>{t}</div>
+          {status === 'success' ? (
+            <div style={{ minHeight: 380, display: 'flex', flexDirection: 'column',
+              alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '20px 0' }}>
+              <div style={{
+                width: 64, height: 64, borderRadius: '50%',
+                background: COLORS_V2.accent, color: 'white',
+                display: 'grid', placeItems: 'center', marginBottom: 24,
+                fontSize: 32, fontWeight: 700,
+              }}>✓</div>
+              <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 12 }}>
+                Mahalo — we got it.
+              </div>
+              <p style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', maxWidth: 380, margin: '0 0 24px' }}>
+                We&rsquo;ll reply within one business day. If you don&rsquo;t hear back, check your spam — or email us directly.
+              </p>
+              <button onClick={() => setStatus('idle')} style={{
+                background: 'transparent', color: 'white',
+                border: '1px solid rgba(255,255,255,0.3)',
+                padding: '10px 20px', borderRadius: 999,
+                fontSize: 14, fontWeight: 500,
+              }}>Send another</button>
             </div>
-          ))}
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.08em',
+                textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: 8 }}>
+                Send us a message
+              </div>
+              <div style={{ fontSize: 15, color: 'rgba(255,255,255,0.85)', marginBottom: 24, lineHeight: 1.5 }}>
+                Tell us about your store and we&rsquo;ll reply same business day.
+              </div>
+
+              {/* Web3Forms hidden fields */}
+              <input type="hidden" name="access_key" value="adeb6c3b-2bf5-4dad-a49a-59875cbaf20d" />
+              <input type="hidden" name="subject" value="Aloha Smart System — New Contact Form Submission" />
+              <input type="hidden" name="from_name" value="Aloha Smart System Website" />
+              {/* honeypot */}
+              <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+
+              <div style={{ display: 'grid', gap: 16 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                  <div>
+                    <label htmlFor="aloha-name" style={labelStyle}>Name *</label>
+                    <input id="aloha-name" type="text" name="name" required style={inputStyle}
+                      onFocus={e => { e.target.style.borderColor = COLORS_V2.accent; e.target.style.background = 'rgba(255,255,255,0.07)'; }}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.18)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                  </div>
+                  <div>
+                    <label htmlFor="aloha-business" style={labelStyle}>Business name</label>
+                    <input id="aloha-business" type="text" name="business" placeholder="Optional" style={inputStyle}
+                      onFocus={e => { e.target.style.borderColor = COLORS_V2.accent; e.target.style.background = 'rgba(255,255,255,0.07)'; }}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.18)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                  <div>
+                    <label htmlFor="aloha-email" style={labelStyle}>Email *</label>
+                    <input id="aloha-email" type="email" name="email" required style={inputStyle}
+                      onFocus={e => { e.target.style.borderColor = COLORS_V2.accent; e.target.style.background = 'rgba(255,255,255,0.07)'; }}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.18)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                  </div>
+                  <div>
+                    <label htmlFor="aloha-phone" style={labelStyle}>Phone</label>
+                    <input id="aloha-phone" type="tel" name="phone" placeholder="Optional" style={inputStyle}
+                      onFocus={e => { e.target.style.borderColor = COLORS_V2.accent; e.target.style.background = 'rgba(255,255,255,0.07)'; }}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.18)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="aloha-message" style={labelStyle}>Tell us about your store *</label>
+                  <textarea id="aloha-message" name="message" required rows="5"
+                    placeholder="What kind of business — restaurant, food court, market? What are you trying to fix or set up?"
+                    style={{ ...inputStyle, resize: 'vertical', minHeight: 120, fontFamily: 'inherit' }}
+                    onFocus={e => { e.target.style.borderColor = COLORS_V2.accent; e.target.style.background = 'rgba(255,255,255,0.07)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.18)'; e.target.style.background = 'rgba(255,255,255,0.05)'; }} />
+                </div>
+
+                {status === 'error' && (
+                  <div style={{
+                    background: 'rgba(217,79,47,0.15)',
+                    border: '1px solid rgba(217,79,47,0.4)',
+                    borderRadius: 10, padding: '12px 16px',
+                    fontSize: 14, color: '#FFD7CC', lineHeight: 1.5,
+                  }}>
+                    {errorMsg} Or email <a href={`mailto:${ALOHA_BRAND.email}`} style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>{ALOHA_BRAND.email}</a> directly.
+                  </div>
+                )}
+
+                <button type="submit" disabled={status === 'submitting'} style={{
+                  background: status === 'submitting' ? 'rgba(200,85,61,0.6)' : COLORS_V2.accent,
+                  color: 'white', border: 'none',
+                  padding: '16px 28px', borderRadius: 999,
+                  fontSize: 15, fontWeight: 700, letterSpacing: '-0.01em',
+                  cursor: status === 'submitting' ? 'wait' : 'pointer',
+                  marginTop: 8, transition: 'background 150ms ease',
+                }}>
+                  {status === 'submitting' ? 'Sending…' : 'Send message →'}
+                </button>
+
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, marginTop: -2 }}>
+                  By submitting, you&rsquo;re sharing your contact info with Aloha Smart System (Musubi Media LLC). We don&rsquo;t share it with anyone else.
+                </div>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>
