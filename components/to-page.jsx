@@ -466,27 +466,33 @@ function TOContactCTA() {
       background: `linear-gradient(135deg, ${TO_C.crimson}, ${TO_C.crimsonDeep})`,
       color: 'white', padding: isMobile ? '72px 20px' : '112px 32px',
     }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
-        <h2 style={{ fontSize: isMobile ? 'clamp(34px, 9vw, 48px)' : 'clamp(40px, 5.5vw, 80px)', lineHeight: 1.0,
-          letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 18px' }}>
-          See it at Sura Hawaii.<br/>Then build yours.
-        </h2>
-        <p style={{ fontSize: isMobile ? 15 : 18, lineHeight: 1.55, color: 'rgba(255,255,255,0.85)',
-          maxWidth: 620, margin: '0 auto 28px' }}>
-          Bring your floor plan and menu. We'll show you the live system and come back with a real quote.
-        </p>
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:info@alohasmartsystem.com" style={{ background: 'white', color: TO_C.crimsonDeep,
-            padding: isMobile ? '14px 26px' : '16px 32px', borderRadius: 999, fontWeight: 700, fontSize: isMobile ? 14 : 15 }}>
-            Get in touch →
-          </a>
-          <a href="../index.html#products" style={{
-            background: 'transparent', color: 'white',
-            border: '1.5px solid rgba(255,255,255,0.5)', padding: isMobile ? '12.5px 24px' : '14.5px 30px', borderRadius: 999,
-            fontWeight: 600, fontSize: isMobile ? 14 : 15 }}>
-            See other products
-          </a>
+      <div style={{ maxWidth: 1200, margin: '0 auto',
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? 32 : 64, alignItems: 'start' }}>
+        <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16 }}>
+            Bring your floor plan
+          </div>
+          <h2 style={{ fontSize: isMobile ? 'clamp(32px, 9vw, 44px)' : 'clamp(36px, 4.5vw, 60px)', lineHeight: 1.0,
+            letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 18px' }}>
+            See it at Sura Hawaii.<br/>Then build yours.
+          </h2>
+          <p style={{ fontSize: isMobile ? 15 : 17, lineHeight: 1.55, color: 'rgba(255,255,255,0.85)',
+            maxWidth: 520, margin: isMobile ? '0 auto 24px' : '0 0 24px' }}>
+            Bring your floor plan and menu. We&rsquo;ll show you the live system at Sura
+            and come back with a real quote.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+            <div>📧 <a href="mailto:info@alohasmartsystem.com" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>info@alohasmartsystem.com</a></div>
+            <div>📞 <a href="tel:+18086503331" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>(808) 650-3331</a></div>
+          </div>
         </div>
+        <AlohaContactForm
+          accentColor={TO_C.crimsonDeep}
+          productName="Table Order"
+          isMobile={isMobile}
+        />
       </div>
     </section>
   );

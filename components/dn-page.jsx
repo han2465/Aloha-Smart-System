@@ -595,35 +595,35 @@ function DNOffer() {
 function DNContact() {
   const isMobile = useIsMobile();
   return (
-    <section id="contact" style={{ padding: isMobile ? '64px 20px' : '96px 32px', background: DN_C.ink, color: 'white' }}>
-      <div style={{ maxWidth: 880, margin: '0 auto', textAlign: 'center' }}>
-        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em',
-          textTransform: 'uppercase', color: DN_C.gold, marginBottom: 14 }}>
-          Get started
+    <section id="contact" style={{ padding: isMobile ? '72px 20px' : '112px 32px', background: DN_C.ink, color: 'white' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto',
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? 32 : 64, alignItems: 'start' }}>
+        <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: DN_C.gold, marginBottom: 16 }}>
+            Get started
+          </div>
+          <h2 style={{ fontSize: isMobile ? 'clamp(34px, 10vw, 48px)' : 'clamp(40px, 4.8vw, 64px)', lineHeight: 1.02,
+            letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 18px' }}>
+            Light up your TVs.
+          </h2>
+          <p style={{ fontSize: isMobile ? 14 : 17, color: 'rgba(255,255,255,0.7)',
+            maxWidth: 520, margin: isMobile ? '0 auto 24px' : '0 0 24px', lineHeight: 1.6 }}>
+            Send us your floor plan or a photo of your existing TVs.
+            We&rsquo;ll come back with a layout proposal, a content rotation, and a number &mdash; usually same day.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+            <div>📧 <a href="mailto:info@alohasmartsystem.com" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>info@alohasmartsystem.com</a></div>
+            <div>📞 <a href="tel:+18086503331" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>(808) 650-3331</a></div>
+          </div>
         </div>
-        <h2 style={{ fontSize: isMobile ? 'clamp(34px, 10vw, 48px)' : 'clamp(40px, 5vw, 68px)', lineHeight: 1.02,
-          letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 16px' }}>
-          Light up your TVs.
-        </h2>
-        <p style={{ fontSize: isMobile ? 14 : 17, color: 'rgba(255,255,255,0.7)',
-          maxWidth: 600, margin: isMobile ? '0 auto 24px' : '0 auto 36px', lineHeight: 1.6 }}>
-          Send us your floor plan or a photo of your existing TVs.
-          We'll come back with a layout proposal, a content rotation, and a number — usually same day.
-        </p>
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:info@alohasmartsystem.com?subject=Musubi%20Display%20Network%20-%20Quote" style={{
-            background: DN_C.gold, color: DN_C.ink, padding: isMobile ? '14px 26px' : '16px 32px', borderRadius: 999,
-            fontWeight: 700, fontSize: isMobile ? 14 : 15, whiteSpace: 'nowrap',
-          }}>Get in touch →</a>
-          <a href="../find-your-fit.html" style={{
-            background: 'transparent', color: 'white',
-            border: '1.5px solid rgba(255,255,255,0.5)', padding: isMobile ? '12.5px 22px' : '14.5px 30px',
-            borderRadius: 999, fontWeight: 600, fontSize: isMobile ? 13 : 14, whiteSpace: 'nowrap',
-          }}>Take the 60-second fit quiz</a>
-        </div>
-        <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 28 }}>
-          Built in Honolulu &middot; Clover-authorized &middot; (808) 650-3331
-        </div>
+        <AlohaContactForm
+          accentColor={DN_C.gold}
+          productName="Display Network"
+          isMobile={isMobile}
+          onDark={true}
+        />
       </div>
     </section>
   );

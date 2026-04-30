@@ -373,32 +373,37 @@ function KSKCompare() {
 function KSKContact() {
   const isMobile = useIsMobile();
   return (
-    <section id="contact" style={{ padding: isMobile ? '64px 20px' : '96px 32px', background: KSK_C.bgAlt }}>
-      <div style={{ maxWidth: 880, margin: '0 auto', textAlign: 'center' }}>
-        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em',
-          textTransform: 'uppercase', color: KSK_C.cloverGreenDeep, marginBottom: 14 }}>
-          Not sure which?
+    <section id="contact" style={{
+      background: `linear-gradient(135deg, ${KSK_C.cloverGreen}, ${KSK_C.cloverGreenDeep})`,
+      color: 'white', padding: isMobile ? '72px 20px' : '112px 32px',
+    }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto',
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? 32 : 64, alignItems: 'start' }}>
+        <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16 }}>
+            Not sure which?
+          </div>
+          <h2 style={{ fontSize: isMobile ? 'clamp(30px, 9vw, 40px)' : 'clamp(36px, 4.5vw, 56px)', lineHeight: 1.02,
+            letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 18px' }}>
+            We&rsquo;ll spec it for you.
+          </h2>
+          <p style={{ fontSize: isMobile ? 14 : 17, color: 'rgba(255,255,255,0.85)', maxWidth: 520,
+            margin: isMobile ? '0 auto 24px' : '0 0 24px', lineHeight: 1.6 }}>
+            Send us a photo of where the kiosk goes and tell us your daily ticket count.
+            We&rsquo;ll come back with a hardware recommendation, a layout, and a number &mdash; usually same day.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+            <div>📧 <a href="mailto:info@alohasmartsystem.com" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>info@alohasmartsystem.com</a></div>
+            <div>📞 <a href="tel:+18086503331" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>(808) 650-3331</a></div>
+          </div>
         </div>
-        <h2 style={{ fontSize: isMobile ? 'clamp(30px, 9vw, 40px)' : 'clamp(36px, 5vw, 60px)', lineHeight: 1.02,
-          letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 16px', color: KSK_C.ink }}>
-          We'll spec it for you.
-        </h2>
-        <p style={{ fontSize: isMobile ? 14 : 17, color: KSK_C.ink70, maxWidth: 600,
-          margin: isMobile ? '0 auto 24px' : '0 auto 36px', lineHeight: 1.6 }}>
-          Send us a photo of where the kiosk goes and tell us your daily ticket count.
-          We'll come back with a hardware recommendation, a layout, and a number — usually same day.
-        </p>
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:info@alohasmartsystem.com?subject=Smart%20Kiosk%20-%20Quote" style={{
-            background: KSK_C.cloverGreen, color: 'white', padding: isMobile ? '14px 26px' : '16px 32px', borderRadius: 999,
-            fontWeight: 700, fontSize: isMobile ? 14 : 15 }}>Get a quote →</a>
-          <a href="../find-your-fit.html" style={{ background: 'transparent', color: KSK_C.ink,
-            border: `1.5px solid ${KSK_C.ink30}`, padding: isMobile ? '12.5px 22px' : '14.5px 30px',
-            borderRadius: 999, fontWeight: 600, fontSize: isMobile ? 13 : 14 }}>Take the 60-second fit quiz</a>
-        </div>
-        <div style={{ fontSize: 13, color: KSK_C.ink50, marginTop: 28 }}>
-          Built in Honolulu &middot; Clover-authorized &middot; (808) 650-3331
-        </div>
+        <AlohaContactForm
+          accentColor={KSK_C.cloverGreenDeep}
+          productName="Smart Kiosk"
+          isMobile={isMobile}
+        />
       </div>
     </section>
   );

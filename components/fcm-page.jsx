@@ -456,31 +456,34 @@ function FCMContactCTA() {
       backgroundImage: `linear-gradient(135deg, ${FCM_C.terra}, ${FCM_C.terraDeep}), ${FCM_PLUMERIA_BG}`,
       backgroundBlendMode: 'normal',
     }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
-        <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
-          textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16 }}>
-          Build your food hall
+      <div style={{ maxWidth: 1200, margin: '0 auto',
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? 32 : 64, alignItems: 'start' }}>
+        <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16 }}>
+            Build your food hall
+          </div>
+          <h2 style={{ fontSize: isMobile ? 'clamp(30px, 9vw, 42px)' : 'clamp(36px, 4.5vw, 60px)', lineHeight: 1.0,
+            letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 20px' }}>
+            See Food Court Master.<br/>Then build yours.
+          </h2>
+          <p style={{ fontSize: isMobile ? 15 : 17, lineHeight: 1.55, color: 'rgba(255,255,255,0.8)',
+            maxWidth: 520, margin: isMobile ? '0 auto 24px' : '0 0 28px' }}>
+            We&rsquo;ll walk you through the full Food Court Master demo live. Bring your floor plan, your vendor mix,
+            and your existing processor statement &mdash; we&rsquo;ll come back with a real quote.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+            <div>📧 <a href="mailto:info@alohasmartsystem.com" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>info@alohasmartsystem.com</a></div>
+            <div>📞 <a href="tel:+18086503331" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>(808) 650-3331</a></div>
+          </div>
         </div>
-        <h2 style={{ fontSize: isMobile ? 'clamp(30px, 9vw, 42px)' : 'clamp(40px, 5.5vw, 80px)', lineHeight: 1.0,
-          letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 20px' }}>
-          See Food Court Master.<br/>Then build yours.
-        </h2>
-        <p style={{ fontSize: isMobile ? 15 : 18, lineHeight: 1.55, color: 'rgba(255,255,255,0.8)',
-          maxWidth: 640, margin: isMobile ? '0 auto 28px' : '0 auto 40px' }}>
-          We&rsquo;ll walk you through the full Food Court Master demo live. Bring your floor plan, your vendor mix,
-          and your existing processor statement — we&rsquo;ll come back with a real quote.
-        </p>
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:info@alohasmartsystem.com" style={{ background: 'white', color: FCM_C.terraDeep,
-            padding: isMobile ? '14px 24px' : '16px 32px', borderRadius: 999, fontWeight: 700, fontSize: isMobile ? 14 : 15, whiteSpace: 'nowrap' }}>
-            Book a live walkthrough →
-          </a>
-          <a href="../index.html#products" style={{ background: 'transparent', color: 'white',
-            border: '1.5px solid rgba(255,255,255,0.5)', padding: isMobile ? '12.5px 22px' : '14.5px 30px', borderRadius: 999,
-            fontWeight: 600, fontSize: isMobile ? 14 : 15, whiteSpace: 'nowrap' }}>
-            See other products
-          </a>
-        </div>
+        <AlohaContactForm
+          accentColor={FCM_C.terraDeep}
+          deepColor={FCM_C.terraDeep}
+          productName="Food Court Master"
+          isMobile={isMobile}
+        />
       </div>
     </section>
   );

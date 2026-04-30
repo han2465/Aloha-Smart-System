@@ -675,34 +675,38 @@ function IMContactCTA() {
     <section id="contact" style={{
       background: `linear-gradient(135deg, ${IM_C.teal}, ${IM_C.tealDeep})`,
       color: 'white', padding: isMobile ? '72px 20px' : '120px 32px',
-      backgroundImage: `linear-gradient(135deg, ${IM_C.teal}, ${IM_C.tealDeep}), ${IM_PLUMERIA_BG}`,
     }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
-        <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
-          textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16 }}>
-          Try it on your store
-        </div>
-        <h2 style={{ fontSize: isMobile ? 'clamp(34px, 9vw, 48px)' : 'clamp(40px, 5.5vw, 80px)', lineHeight: 1.0,
-          letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 18px' }}>
-          Five minutes to set up.<br/>Two weeks to learn.
-        </h2>
-        <p style={{ fontSize: isMobile ? 15 : 18, lineHeight: 1.55, color: 'rgba(255,255,255,0.85)',
-          maxWidth: 640, margin: '0 auto 28px' }}>
-          See Soul Chicken’s live system, then we’ll spin up your tenant.
-          Your brand color, your suppliers, your first count by Friday.
-        </p>
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:info@alohasmartsystem.com" style={{ background: 'white', color: IM_C.tealDeep,
-            padding: isMobile ? '14px 26px' : '16px 32px', borderRadius: 999, fontWeight: 700, fontSize: isMobile ? 14 : 15, whiteSpace: 'nowrap' }}>
-            Get in touch →
-          </a>
+      <div style={{ maxWidth: 1200, margin: '0 auto',
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? 32 : 64, alignItems: 'start' }}>
+        <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16 }}>
+            Try it on your store
+          </div>
+          <h2 style={{ fontSize: isMobile ? 'clamp(34px, 9vw, 48px)' : 'clamp(36px, 4.5vw, 60px)', lineHeight: 1.0,
+            letterSpacing: '-0.03em', fontWeight: 700, margin: '0 0 18px' }}>
+            Five minutes to set up.<br/>Two weeks to learn.
+          </h2>
+          <p style={{ fontSize: isMobile ? 15 : 17, lineHeight: 1.55, color: 'rgba(255,255,255,0.85)',
+            maxWidth: 520, margin: isMobile ? '0 auto 24px' : '0 0 24px' }}>
+            See Soul Chicken&rsquo;s live system, then we&rsquo;ll spin up your tenant.
+            Your brand color, your suppliers, your first count by Friday.
+          </p>
           <a href="https://inventory.soulchickenhawaii.com" target="_blank" rel="noopener" style={{
-            background: 'transparent', color: 'white',
-            border: '1.5px solid rgba(255,255,255,0.5)', padding: isMobile ? '12.5px 24px' : '14.5px 30px', borderRadius: 999,
-            fontWeight: 600, fontSize: isMobile ? 14 : 15, whiteSpace: 'nowrap' }}>
-            See it live
-          </a>
+            display: 'inline-block', color: 'white',
+            borderBottom: '1px solid rgba(255,255,255,0.4)', fontSize: 14, fontWeight: 600, marginBottom: 18,
+          }}>See Soul Chicken live →</a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+            <div>📧 <a href="mailto:info@alohasmartsystem.com" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>info@alohasmartsystem.com</a></div>
+            <div>📞 <a href="tel:+18086503331" style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>(808) 650-3331</a></div>
+          </div>
         </div>
+        <AlohaContactForm
+          accentColor={IM_C.tealDeep}
+          productName="Inventory Master"
+          isMobile={isMobile}
+        />
       </div>
     </section>
   );
